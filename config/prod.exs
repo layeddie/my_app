@@ -10,8 +10,21 @@ use Mix.Config
 # which you should run after static files are built and
 # before starting your production server.
 config :my_app, MyAppWeb.Endpoint,
-  url: [host: "example.com", port: 80],
-  cache_static_manifest: "priv/static/cache_manifest.json"
+  url: [host: "optimized.ml", port: 443],
+  cache_static_manifest: "priv/static/cache_manifest.json",
+  server: true,
+  force_ssl: [hsts: true],
+  http: [transport_options: [socket_opts: [:inet6]]],
+  https: [
+    cipher_suite: :strong,
+    transport_options: [socket_opts: [:inet6]]
+  ]
+
+# Set path to cert folder
+config :my_app, :cert_path, "/home/Damon/site_encrypt_db"
+
+# Set the cert mode so site_encrypt knows to hit live LetsEncrypt
+config :my_app, :cert_mode, "production"
 
 # Do not print debug messages in production
 config :logger, level: :info
