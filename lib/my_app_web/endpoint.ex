@@ -25,7 +25,9 @@ defmodule MyAppWeb.Endpoint do
 
   def www_redirect(conn, _options) do
     if String.starts_with?(conn.host, "www.#{host()}") do
-      conn |> Phoenix.Controller.redirect(external: "https://#{host()}") |> halt()
+      conn
+      |> Phoenix.Controller.redirect(external: "https://#{host()}")
+      |> halt()
     else
       conn
     end
@@ -46,6 +48,7 @@ defmodule MyAppWeb.Endpoint do
 
   socket "/live", Phoenix.LiveView.Socket, websocket: [connect_info: [session: @session_options]]
 
+  # Redirect all www requests to the root url
   plug :www_redirect
 
   # Serve at "/" the static files from "priv/static" directory.
