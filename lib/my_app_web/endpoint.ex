@@ -25,7 +25,7 @@ defmodule MyAppWeb.Endpoint do
 
   def www_redirect(conn, _options) do
     if String.starts_with?(conn.host, "www.#{host()}") do
-      Phoenix.Controller.redirect(conn, external: "https://#{host()}")
+      conn |> Phoenix.Controller.redirect(external: "https://#{host()}") |> halt()
     else
       conn
     end
