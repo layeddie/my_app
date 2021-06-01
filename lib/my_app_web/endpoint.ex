@@ -23,16 +23,6 @@ defmodule MyAppWeb.Endpoint do
     )
   end
 
-  def www_redirect(conn, _options) do
-    if String.starts_with?(conn.host, "www.#{host()}") do
-      conn
-      |> Phoenix.Controller.redirect(external: "https://#{host()}")
-      |> halt()
-    else
-      conn
-    end
-  end
-
   # The session will be stored in the cookie and signed,
   # this means its contents can be read but not tampered with.
   # Set :encryption_salt if you would also like to encrypt it.
@@ -47,6 +37,16 @@ defmodule MyAppWeb.Endpoint do
     longpoll: false
 
   socket "/live", Phoenix.LiveView.Socket, websocket: [connect_info: [session: @session_options]]
+
+  def www_redirect(conn, _options) do
+    if String.starts_with?(conn.host, "www.#{host()}") do
+      conn
+      |> Phoenix.Controller.redirect(external: "https://#{host()}")
+      |> halt()
+    else
+      conn
+    end
+  end
 
   # Redirect all www requests to the root url
   plug :www_redirect
