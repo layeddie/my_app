@@ -14,8 +14,9 @@ config :my_app, MyAppWeb.Endpoint,
   cache_static_manifest: "priv/static/cache_manifest.json",
   server: true,
   force_ssl: [hsts: true],
-  http: [transport_options: [socket_opts: [:inet6]]],
+  http: [port: 4000, transport_options: [socket_opts: [:inet6]]],
   https: [
+    port: 4040,
     cipher_suite: :strong,
     transport_options: [socket_opts: [:inet6]]
   ]
