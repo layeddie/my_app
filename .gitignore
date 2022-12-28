@@ -32,3 +32,8 @@ npm-debug.log
 # we ignore priv/static. You may want to comment
 # this depending on your deployment strategy.
 /priv/static/
+
+# Added for exercise Damon Janis
+# Ignore secrets files
+/config/*.secret.exs# Ignore local cert files
+/tmp/
