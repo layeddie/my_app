@@ -9,4 +9,4 @@ config :my_app, MyApp.Repo,
   pool_size: 10
 
 config :my_app, MyAppWeb.Endpoint,
-  secret_key_base: "<run mix phx.gen.secret and paste the value here>"
+  secret_key_base: "aJykhkm2sOJxlnAzkHq3QVQsnIL9jnXtP0ozCkTIW4hirCTP6tw+hyrJP53gbB7R"
