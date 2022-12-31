@@ -1,8 +1,8 @@
-use Mix.Config
+import Config
 
 config :my_app, MyApp.Repo,
   username: "postgres",
-  password: "<the random password you generated>",
+  password: "F2!A36RdJU@W87h@b.3FNiQK",
   database: "my_app",
   hostname: "localhost",
   ssl: true,
